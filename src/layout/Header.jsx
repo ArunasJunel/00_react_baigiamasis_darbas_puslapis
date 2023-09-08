@@ -1,6 +1,9 @@
 import { Link, NavLink } from "react-router-dom";
+import { useAuth } from "../store/AuthProvider";
 
 export default function Header() {
+  const ctx = useAuth();
+
   return (
     <header className="container flex justify-between items-center">
       <Link to={"/"}>
