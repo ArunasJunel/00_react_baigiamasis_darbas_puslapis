@@ -13,9 +13,13 @@ export default function Header() {
         <NavLink to={"/"}>Home</NavLink>
         <NavLink to={"/login"}>Login</NavLink>
         <NavLink to={"/register"}>Register</NavLink>
-        <NavLink to={"/login"}>Logout</NavLink>
-        <NavLink to={"/shops"}>Shops</NavLink>
-        <NavLink to={"/add-shop"}>Add Shop</NavLink>
+        {ctx.isUserLoggedIn && (
+          <>
+            <NavLink to={"/login"}>Logout</NavLink>
+            <NavLink to={"/shops"}>Shops</NavLink>
+            <NavLink to={"/add-shop"}>Add Shop</NavLink>
+          </>
+        )}
       </nav>
     </header>
   );
