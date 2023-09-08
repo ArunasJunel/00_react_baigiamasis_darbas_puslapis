@@ -6,6 +6,7 @@ import ShopsPage from "./pages/ShopsPage";
 import AddShopPage from "./pages/AddShopPage";
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
+import NotFoundPage from "./pages/NotFoundPage";
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/shops" element={<ShopsPage />} />
         <Route path="/add-shop" element={<AddShopPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Footer />
     </div>
