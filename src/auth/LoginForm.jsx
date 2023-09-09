@@ -1,11 +1,13 @@
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useFormik } from "formik";
+import { toast } from "react-hot-toast";
 import * as Yup from "yup";
 
 export default function LoginForm() {
   const formik = useFormik({
     initialValues: {
-      email: "",
-      password: "",
+      email: "arunas@junel.lt",
+      password: "junel123",
     },
     validationSchema: Yup.object({
       email: Yup.string().email().required(),
@@ -13,9 +15,27 @@ export default function LoginForm() {
     }),
     onSubmit: (values) => {
       console.log("formik values ===", values);
+      loginWithFirestore(values.email, values.password);
     },
   });
   console.log("formik.errors ===", formik.errors);
+  function loginWithFirestore(email, password) {
+    const auth = getAuth();
+    signInWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log("user is logged in ===", user);
+        toast.success(`You have logged in successfully. Welcome, ${email}`);
+        // ...
+      })
+      .catch((error) => {
+        toast.error("Login failed, check email or password");
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+      });
+  }
   return (
     <div>
       <form onSubmit={formik.handleSubmit} className="max-w-xs">

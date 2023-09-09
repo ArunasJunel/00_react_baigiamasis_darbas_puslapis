@@ -8,11 +8,13 @@ import Header from "./layout/Header";
 import Footer from "./layout/Footer";
 import NotFoundPage from "./pages/NotFoundPage";
 import { useAuth } from "./store/AuthProvider";
+import { Toaster } from "react-hot-toast";
 
 export default function App() {
   const ctx = useAuth();
   return (
     <div>
+      <Toaster />
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
