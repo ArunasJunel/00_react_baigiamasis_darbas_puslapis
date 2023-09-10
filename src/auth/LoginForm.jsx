@@ -1,9 +1,11 @@
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useFormik } from "formik";
 import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router";
 import * as Yup from "yup";
 
 export default function LoginForm() {
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues: {
       email: "arunas@junel.lt",
@@ -27,6 +29,7 @@ export default function LoginForm() {
         const user = userCredential.user;
         console.log("user is logged in ===", user);
         toast.success(`You have logged in successfully. Welcome, ${email}`);
+        navigate("/shops", { replace: true });
         // ...
       })
       .catch((error) => {
