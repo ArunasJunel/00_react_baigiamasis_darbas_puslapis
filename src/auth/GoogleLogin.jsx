@@ -15,8 +15,7 @@ export default function GoogleLogin() {
           `You have logged in successfully. Welcome, ${user.email}`
         );
       })
-      .catch((error) => {
-        console.warn("error ===", error);
+      .catch(() => {
         toast.error("Oops! Something went wrong!");
       });
   }

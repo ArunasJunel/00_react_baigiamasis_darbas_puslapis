@@ -22,7 +22,6 @@ export default function RegisterPage() {
         .required("Required"),
     }),
     onSubmit: (values) => {
-      console.log("values registration ===", values);
       registerWithFirebase(
         values.email,
         values.password,

@@ -3,7 +3,6 @@ import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import { GoogleAuthProvider } from "firebase/auth";
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_apiKey,
   authDomain: import.meta.env.VITE_authDomain,

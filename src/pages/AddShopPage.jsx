@@ -32,7 +32,6 @@ export default function AddShopPage() {
       imageUrl: Yup.string().min(5, "Minimum 5 symbols.").required(),
     }),
     onSubmit: (values) => {
-      console.log("formik values ===", values);
       const newObjWithUid = {
         ...values,
         userUid: ctx.userUid,
@@ -48,7 +47,6 @@ export default function AddShopPage() {
       toast.success("Shop created");
       navigate("/shops", { replace: true });
     } catch (error) {
-      console.error("Error adding document: ", error);
       toast.error("Something went wrong");
     }
   }

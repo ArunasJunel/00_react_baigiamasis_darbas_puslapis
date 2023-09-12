@@ -23,7 +23,7 @@ export default function ShopsPage() {
         ...doc.data(),
       });
     });
-    console.log("dataBack ===", dataBack);
+
     setShopsArr(dataBack);
   }
 
@@ -33,8 +33,7 @@ export default function ShopsPage() {
         toast.success("Have been deleted!");
         getShops();
       })
-      .catch((error) => {
-        console.warn("ivyko klaida:", error);
+      .catch(() => {
         toast.error("Failed to delete");
       });
   }

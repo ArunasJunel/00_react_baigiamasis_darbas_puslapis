@@ -12,10 +12,9 @@ export default function SingleShopPage() {
       const docRef = doc(db, "shops", params.shopId);
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
-        console.log("Document data:", docSnap.data());
         setCurrentShopObj(docSnap.data());
       } else {
-        console.log("No such document!");
+        console.warn("No such document!");
       }
     }
     getSingleDocumentFromFirebase();

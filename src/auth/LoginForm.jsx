@@ -16,27 +16,18 @@ export default function LoginForm() {
       password: Yup.string().min(6).required(),
     }),
     onSubmit: (values) => {
-      console.log("formik values ===", values);
       loginWithFirestore(values.email, values.password);
     },
   });
-  console.log("formik.errors ===", formik.errors);
   function loginWithFirestore(email, password) {
     const auth = getAuth();
     signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        console.log("user is logged in ===", user);
+      .then(() => {
         toast.success(`You have logged in successfully. Welcome, ${email}`);
         navigate("/shops", { replace: true });
-        // ...
       })
-      .catch((error) => {
+      .catch(() => {
         toast.error("Login failed, check email or password");
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
       });
   }
   return (
