@@ -13,7 +13,7 @@ import SingleShopPage from "./pages/SingleShopPage";
 
 export default function App() {
   const ctx = useAuth();
-  console.log("ctx ===", ctx);
+
   return (
     <div>
       <Toaster />
