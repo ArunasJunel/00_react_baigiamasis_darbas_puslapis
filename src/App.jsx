@@ -9,15 +9,18 @@ import Footer from "./layout/Footer";
 import NotFoundPage from "./pages/NotFoundPage";
 import { useAuth } from "./store/AuthProvider";
 import { Toaster } from "react-hot-toast";
+import SingleShopPage from "./pages/SingleShopPage";
 
 export default function App() {
   const ctx = useAuth();
+  console.log("ctx ===", ctx);
   return (
     <div>
       <Toaster />
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="shop/:shopId" element={<SingleShopPage />} />
         {!ctx.isUserLoggedIn && (
           <>
             <Route path="/login" element={<LoginPage />} />
