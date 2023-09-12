@@ -1,6 +1,5 @@
 import { getAuth, onAuthStateChanged } from "@firebase/auth";
 import { createContext, useContext, useEffect, useState } from "react";
-import toast from "react-hot-toast";
 
 const AuthContext = createContext({
   email: "",
@@ -28,7 +27,6 @@ export default function AuthProvider(props) {
 
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        toast.success("Login succesful");
         setUser(user);
         localStorage.setItem("currentUser", JSON.stringify(user));
       } else {
@@ -42,7 +40,6 @@ export default function AuthProvider(props) {
   );
 }
 
-// eslint-disable-next-line react-refresh/only-export-components
 export function useAuth() {
   return useContext(AuthContext);
 }
