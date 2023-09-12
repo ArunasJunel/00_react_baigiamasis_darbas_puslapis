@@ -43,55 +43,68 @@ export default function RegisterPage() {
     );
   }
   return (
-    <div className="container">
-      <h2>Register</h2>
+    <div className="bg-[url('https://websitedemos.net/love-nature-02/wp-content/uploads/sites/988/2022/01/header-hero.jpg')]  h-screen bg-cover bg-center  ">
+      <div className="absolute  inset-x-0 text-center top-[20%] backdrop-brightness-75 w-[80%] h-96 m-auto ">
+        <h2 className="text-3xl text-white font-bold pb-4 mt-4">Register</h2>
 
-      <form onSubmit={formik.handleSubmit}>
-        <input
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.email}
-          className="border border-slate-800 px-4 py-2"
-          id="email"
-          type="text"
-          placeholder="Email"
-        />
-        {formik.errors.email && formik.touched.email && (
-          <p className="text-md text-red-500">{formik.errors.email}</p>
-        )}
-        <input
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.password}
-          className="border border-slate-800 px-4 py-2"
-          id="password"
-          type="password"
-          placeholder="Password"
-        />
-        {formik.errors.password && formik.touched.password && (
-          <p className="text-md text-red-500">{formik.errors.password}</p>
-        )}
-        <input
-          onChange={formik.handleChange}
-          onBlur={formik.handleBlur}
-          value={formik.values.confirmPassword}
-          className="border border-slate-800 px-4 py-2"
-          id="confirmPassword"
-          type="password"
-          placeholder="Repeat password"
-        />
-        {formik.errors.confirmPassword && formik.touched.confirmPassword && (
-          <p className="text-md text-red-500">
-            {formik.errors.confirmPassword}
-          </p>
-        )}
-        <button
-          className="border border-slate-500 px-4 py-2 rounded-md"
-          type="submit"
-        >
-          Register
-        </button>
-      </form>
+        <form onSubmit={formik.handleSubmit} className=" m-auto">
+          <div>
+            <input
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.email}
+              className="border rounded-md border-slate-800 px-4 py-2 m-2"
+              id="email"
+              type="text"
+              placeholder="Email"
+            />
+            {formik.errors.email && formik.touched.email && (
+              <p className="text-md font-bold text-red-500">
+                {formik.errors.email}
+              </p>
+            )}
+          </div>
+          <div>
+            <input
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.password}
+              className="border rounded-md border-slate-800 px-4 py-2 m-2"
+              id="password"
+              type="password"
+              placeholder="Password"
+            />
+            {formik.errors.password && formik.touched.password && (
+              <p className="text-md font-bold text-red-500">
+                {formik.errors.password}
+              </p>
+            )}
+          </div>
+          <div>
+            <input
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              value={formik.values.confirmPassword}
+              className="border rounded-md border-slate-800 px-4 py-2 m-2"
+              id="confirmPassword"
+              type="password"
+              placeholder="Repeat password"
+            />
+            {formik.errors.confirmPassword &&
+              formik.touched.confirmPassword && (
+                <p className="text-md font-bold text-red-500">
+                  {formik.errors.confirmPassword}
+                </p>
+              )}
+          </div>
+          <button
+            className=" rounded-md px-8 py-4 m-2 w-64 bg-[#ffd936] text-[#536942]"
+            type="submit"
+          >
+            Register
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

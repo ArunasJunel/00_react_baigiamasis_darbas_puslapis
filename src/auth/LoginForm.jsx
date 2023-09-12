@@ -41,13 +41,13 @@ export default function LoginForm() {
   }
   return (
     <div>
-      <form onSubmit={formik.handleSubmit} className="max-w-xs">
+      <form onSubmit={formik.handleSubmit} className=" m-auto">
         <div>
           <input
             onChange={formik.handleChange}
             value={formik.values.email}
             onBlur={formik.handleBlur}
-            className="border border-slate-800 px-4 py-2"
+            className="border rounded-md border-slate-800 px-4 py-2 mb-4 "
             type="text"
             id="email"
             placeholder="Email..."
@@ -61,7 +61,7 @@ export default function LoginForm() {
             onChange={formik.handleChange}
             value={formik.values.password}
             onBlur={formik.handleBlur}
-            className="border border-slate-800 px-4 py-2"
+            className="border rounded-md border-slate-800 px-4 py-2 mb-4"
             type="password"
             id="password"
             placeholder="Password..."
@@ -71,7 +71,7 @@ export default function LoginForm() {
           )}
         </div>
         <button
-          className="border border-slate-500 px-4 py-2 rounded-md"
+          className=" rounded-md px-8 py-4 w-64 bg-[#ffd936] text-[#536942]"
           type="submit"
         >
           Login

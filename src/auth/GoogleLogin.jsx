@@ -1,41 +1,33 @@
-import { GoogleAuthProvider, getAuth, signInWithPopup } from "@firebase/auth";
+import { getAuth, signInWithPopup } from "@firebase/auth";
 import { googleProvider } from "../firebase/firebase";
+import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router";
 
 export default function GoogleLogin() {
+  const navigate = useNavigate();
   function googleAuth() {
     const auth = getAuth();
     signInWithPopup(auth, googleProvider)
       .then((result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        console.log("token ===", token);
-        // The signed-in user info.
         const user = result.user;
-        console.log("user ===", user);
-        // IdP data available using getAdditionalUserInfo(result)
-        // ...
+        navigate("/shops", { replace: true });
+        toast.success(
+          `You have logged in successfully. Welcome, ${user.email}`
+        );
       })
       .catch((error) => {
-        // Handle Errors here.
         console.warn("error ===", error);
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        // ...
+        toast.error("Oops! Something went wrong!");
       });
   }
   return (
     <>
-      <h2>Login with Google</h2>
+      <h2 className="text-xl text-white font-bold p-4">Login with Google</h2>
       <button
-        className="border border-slate-500 px-4 py-2 rounded-md"
+        className=" rounded-md px-8 py-4  w-64 bg-[#536942] text-[#ffd936]"
         onClick={googleAuth}
       >
-        Login google
+        Google login
       </button>
     </>
   );
